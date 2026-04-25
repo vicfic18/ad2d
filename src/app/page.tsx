@@ -196,7 +196,7 @@ export default function Home() {
         <header className="mb-12 border-b-2 border-primary pb-6 flex justify-between items-center bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] border-2">
           <div>
             <h1 className="text-4xl font-black tracking-tighter">aD2D</h1>
-            <p className="text-sm font-bold uppercase tracking-wider text-gray-500 mt-1">Automatic Data to Document</p>
+            <p className="text-sm font-bold uppercase tracking-wider text-gray-500 mt-1">Generate certificates, letters, tickets, etc from a spreadsheet and SVG template directly in your browser.</p>
           </div>
           <div className="flex gap-2">
             {[1, 2, 3].map(s => (
@@ -262,8 +262,38 @@ export default function Home() {
             <div className="col-span-1 md:col-span-2 bg-yellow-100 border-2 border-yellow-400 p-4 flex gap-4 items-center">
               <AlertTriangle className="w-8 h-8 text-yellow-600 shrink-0" />
               <p className="text-sm font-bold">
-                FONTS OVERRIDE WARNING: For robust PDF rendering, all custom fonts within the uploaded SVG template will be overwritten to standard PDF-supported fonts (e.g., Helvetica).
+                FONTS OVERRIDE WARNING: For PDF rendering, all custom fonts within the uploaded SVG template will be overwritten to standard PDF-supported fonts (e.g., Helvetica).
               </p>
+            </div>
+
+            <div className="col-span-1 md:col-span-2 pt-10 border-t-2 border-primary">
+              <h2 className="text-3xl font-black uppercase mb-8 tracking-tighter">How it works</h2>
+
+              <div className="mb-12 bg-white border-2 border-primary p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col md:flex-row md:items-center gap-6">
+                <div className="bg-primary text-white font-black text-xs px-2 py-1 uppercase tracking-widest self-start md:self-auto shrink-0">Template Setup</div>
+                <p className="text-lg font-bold leading-tight text-gray-700">
+                  Create your SVG in any vector tool (Inkscape, Figma etc.) and add text nodes with <span className="text-black underline underline-offset-4 decoration-2">%PLACEHOLDER%</span> syntax. These will be auto-detected for mapping.
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-12">
+                {[
+                  { step: 1, title: 'Upload Files', desc: 'Select your CSV/Excel spreadsheet and SVG template.', img: '/example/1.png' },
+                  { step: 2, title: 'Map Fields', desc: 'Link your dataset columns to the template placeholders.', img: '/example/2.png' },
+                  { step: 3, title: 'Download ZIP', desc: 'Batch generate all PDFs locally and export as an archive.', img: '/example/3.png' }
+                ].map((item) => (
+                  <div key={item.step} className="group">
+                    <div className="relative mb-6 border-2 border-primary shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] overflow-hidden bg-gray-100 aspect-video flex items-center justify-center">
+                      <img src={item.img} alt={item.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+                      <div className="absolute top-0 left-0 bg-primary text-white font-black text-2xl w-10 h-10 flex items-center justify-center">
+                        {item.step}
+                      </div>
+                    </div>
+                    <h3 className="text-xl font-black uppercase tracking-tight mb-2">{item.title}</h3>
+                    <p className="font-bold text-sm text-gray-500 leading-tight">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         )}
@@ -386,10 +416,15 @@ export default function Home() {
       </div>
 
       <footer className="max-w-6xl mx-auto mt-20 border-t-2 border-primary pt-8 pb-12 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 opacity-60 hover:opacity-100 transition-opacity">
-        <div className="font-black text-xs uppercase tracking-[0.2em]">
-          AD2D • AUTOMATIC DATA TO DOCUMENT
+        <div className="flex flex-col gap-2">
+          <div className="font-black text-xs uppercase tracking-[0.2em]">
+            AD2D • AUTOMATIC DATA TO DOCUMENT
+          </div>
+          <div className="text-[10px] font-bold uppercase tracking-widest leading-relaxed">
+            OPEN SOURCE PROJECT • LICENSED UNDER AGPL • <a href="https://github.com/vicfic18/ad2d" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-black">GITHUB.COM/VICFIC18/AD2D</a>
+          </div>
         </div>
-        <div className="text-[10px] font-bold uppercase tracking-widest text-right leading-relaxed">
+        <div className="text-[10px] font-bold uppercase tracking-widest md:text-right leading-relaxed">
           MADE BY VARGHESE K JAMES<br />
           &copy; 2026 • PRIVACY FIRST • FULLY LOCAL
         </div>
