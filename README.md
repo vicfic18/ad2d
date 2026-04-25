@@ -1,6 +1,6 @@
 # AD2D (Automatic Data to Document)
 
-Generate thousands of PDFs (certificates, letters, tickets, etc) from a spreadsheet and an SVG template directly in your browser. 
+Generate thousands of PDFs (certificates, letters, tickets, etc) from a spreadsheet and an SVG template directly in your browser. Spiritual successor to [AnyMailMerge](https://github.com/vicfic18/AnyMailMerge).
 
 No server uploads, this works completely in client side.
 
